@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>form 태그</title>
+</head>
+<body>
+    <form action="serverurl" method="post">
+        <label>이름
+            <input type="text" value="itstudy"/>
+        </label>
+        <label>비밀번호
+            <input type="password" value="itstudy"/>
+        </label>
+        <br/>
+        <fieldset>
+            <legend>성별</legend>
+            <!-- name을 설정하면 하나의 그룹이 되고 서버가 읽을 때는 value 값을 읽음. -->
+            <input type="radio" name="gender" value="man" checked/>남자
+            <input type="radio" name="gender" value="woman"/>여자
+        </fieldset>
+        <label>이미지
+            <!-- file은 선택한 value를 읽을 수는 있지만 설정은 안됨. -->
+            <input type="file">
+        </label>
+        <!-- 버튼은 우리가 기능을 정의 해야 합니다. -->
+        <input type="button" value="버튼" />
+        <!-- 폼의 데이터를 서버에 전송할 때 사용합니다. -->
+        <input type="submit" value="전송" />
+        <!-- reset은 폼의 데이터를 초기화 할 때 사용합니다. -->
+        <input type="reset" value="취소" />
+        <!-- hidden은 눈에 보이지는 않지만 서버에게 데이터를 넘길 수는 있습니다. 
+        서버 어플리케이션과 클라이언트 어플리케이션을 하나로 만들어서 템플릿 엔진을 이용해서
+        출력을 한다면 이 속성은 중요합니다. -->
+        <input type="hidden" value="숨김" name="data" />
+        <br/>
+        <textarea rows="5" cols="30">초기화</textarea>
+        <select name="수량">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+        </select>
+    </form>
+</body>
+</html>
