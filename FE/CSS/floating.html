@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>복합 선택자</title>
+    <style>
+        div{
+            width: 100px;
+            height: 100px;
+            border: 1px solid blue;
+        }
+        div:active{
+            border: 3px solid blue;
+        }
+        #btn{
+            width: 100px;
+            height: 100px;
+            border-width: 3px;
+            border-style: solid;
+            border-left-color: red;
+            border-top-color: red;
+            border-right-color: blue;
+            border-bottom-color: blue;
+        }
+        #btn:active{
+            border-width: 3px;
+            border-style: solid;
+            border-left-color: blue;
+            border-top-color: blue;
+            border-right-color: red;
+            border-bottom-color: red;
+        }
+        a{
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div>버튼</div>
+    <div id="btn">버튼</div>
+    <a href="https://data.go.kr">공공 데이터 포털</a>
+    <a href="https://developer.kakao.com">공공 데이터 포털</a>
+    
+</body>
+</html>

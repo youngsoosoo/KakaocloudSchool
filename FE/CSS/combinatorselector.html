@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>복합 선택자</title>
+</head>
+<body>
+    <h1>안녕하세요<em>아담입니다.</em></h1>
+    <p>한 번 tv에 나와서 노래를 하면<em id="dev">천만원 적자입니다.</em></p>
+    <img src="../XHTML/images/americano.jpg" width="200" height="200"/>
+    H<span>2</span>O
+    <p id="shadow">텍스트 그림자</p>
+    <ol>
+        <li>XHTML</li>
+        <li>CSS</li>
+        <li>JavaScript</li>
+        <li>HTML5</li>
+        <li>Node</li>
+        <li>React</li>
+    </ol>
+</body>
+    <style>
+        ol{
+            list-style: katakana;
+        }
+        #shadow{
+            font-size: 50px;
+            color: #ba9eba;
+            text-shadow: -0.05em -0.05em 0.05em purple, 0.03em 0.03em 0.05em purple;
+        }
+        span{
+            vertical-align: sub;
+            font-size: 0.5em;
+        }
+        img{
+            vertical-align: top;
+        }
+        #dev{
+            color: red;
+            background-color: rgb(45, 23, 89);
+        }
+        h1:hover{
+            color: blue;
+            font-size: 3em;
+            font-family: "돋움";
+        }
+    </style>
+</html>
