@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>자바스크립트로 출력하기</title>
+    <script>
+        /*//브라우저 화면에 출력
+        document.write("<p>안녕하세요</p>");
+        // 대화상자로 출력
+        // alert("대화상자에 출력");
+        //콘솔에 출력 - 브라우저에서 f12 후 Console에서 확인
+        console.log("콘솔에 출력");
+
+        one = 100;
+        function get(){
+            console.log(100);
+            two = 200;
+            var three = 300;
+        }
+        console.log(one);
+        get();
+        console.log(two);   // 키워드 없이 이름을 만들어서 함수가 호출된 이후에
+                            // 어느곳에서든지 사용이 가능한 global이 되어버립니다.
+        console.log(three); // 키워드와 함께 만들어져서 자신의 영역에서만 사용이 가능.*/
+
+        // var x = 1000;    //1000이라는 데이터의 참조를 x에 대입
+        // x= 100;         //100이라는 데이터의 참조를 x에 대입 - 수정
+        // //동일한 이름을 계속해서 생성하는 것이 가능 - 실제로는 수정
+        // var x = 2000;   //2000이라는 데이터의 참조를 x 에 대입
+
+        // let y = 1000;    //1000이라는 데이터의 참조를 x에 대입
+        // y = 100;         //100이라는 데이터의 참조를 x에 대입 - 수정
+        // //동일한 이름을 계속해서 생성하는 것이 가능 - 실제로는 수정
+        // //let y = 2000;   //2000이라는 데이터의 참조를 x 에 대입
+        
+        //x는 var로 선언되서 만들기 전에 호출하면 undefined
+        // console.log(x);
+        // var x = 100;
+        // console.log(x);
+
+        // //y는 let으로 선언되서 만들기 전에 호출하면 error
+        // console.log(y);
+        // let y = 100;
+        // console.log(y);
+        // let data = 10;
+        // console.log("data : " + data);
+        // // 문자열과 데이터를 +하면 데이터를 문자열로 변환해서 결합
+        // data = 20;  // 기존 데이터가 참조하고 있는 데이터를 수정
+        // {   //기존 데이터의 값을 변경하는 것이 아니고 새로운 영역에 data를 만드는 것이다.
+        //     //여러 블럭에 동일한 이름이 여러 개 존재하면 자신의 블럭에서 가까운 블럭에 만드는 것을 우선합니다.
+        //     let data = 2022;
+        //     console.log("data : " + data);  //가까운 곳에서 만든 2022
+        // }
+        // console.log("data : " + data);  //이전 내부 블럭이 없다고 보면 20
+        // //let 대신에 var를 사용하면 내부 블럭에서 외부 블럭의 데이터를 호출할 수 있습니다.
+
+        // const con = 1000;
+        // //con = 2000; //constant variable의 데이터를 변경할 수 없어서 에러.
+        //배열 생성
+        // var ar = ["카리나", "지젤", "윈터", "닝닝"];
+        // console.log("데이터의 개수 : " + ar.length);
+        // //모든 데이터를 빠르게 확인
+        // console.log(ar.toString());
+        // // 출력하는 메서드에 이름을 대입하면 toString()을 호출해서 결과를 하나의 문자열로 출력
+        // console.log(ar);
+        // // 하나씩 출력
+        // console.log(ar[0]);
+        // //console.log(ar[4]); //잘못된 인덱스를 대입 = undefined
+        console.log("23" + "76");
+        console.log(Number("23") + Number("76"));
+
+        var input = prompt("숫자를 입력하세요");
+        console.log(typeof(input));
+        console.log(input + 4);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
