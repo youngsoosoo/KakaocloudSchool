@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>for</title>
+    <script>
+        //Hello Javascript를 3번 출력
+        console.log("Hello Java");
+        console.log("Hello Java");
+        console.log("Hello Java");
+
+        //0부터 3보다 작을 때 까지 하나씩 증가하면서 수행
+        //0, 1, 2
+        //스파게티 코드가 제가되서 유지보수가 편리해집니다.
+        for(var i=0; i<3; i++){
+            console.log("Hello Java");
+        }
+
+        //일정한 패턴이 반복되는 반복문
+
+        //image1.png, iamge11.png, image21.png, image31.png
+        //위의 내용을 반복문을 이용해서 해결
+        for(var i=0; i<4; i++){
+            console.log("image" +  (10 * i + 1) + ".png")
+        }
+
+        //초기식을 while 외부에 작성하고 증감식을 반복 블럭 안에 작성하면
+        //for와 거의 유사한 역할을 하는 형태를 만들 수 있습니다.
+        var i=0;
+        while(i<4){
+            console.log("image" +  (10 * i + 1) + ".png");
+            i++;
+        }
+
+        //do~while로 작성하면 반드시 한 번은 수행한다는 의미를 전달합니다.
+        i=0;
+        do{
+            console.log("image" +  (10 * i + 1) + ".png");
+            i++;
+        }while(i<4);
+
+        //Object 객체 생성 - name과 age라는 속성에 adam과 26이라는 값을 저장
+        var obj = {"name" : "adam", "age" : 26};
+        //Array 객체 생성
+        var ar = [100, 300, 200];
+
+        //obj가 가진 모든 속성을 attr에 대입하고 { } 안의 내용 수행
+        for(var attr in obj){
+            alert(attr + ":" + obj[attr]);
+        }
+        //배열의 경우는 인덱스가 순서대로 attr에 대입됩니다.
+        for(var attr in ar){
+            alert(attr + ":" + ar[attr]);
+        }
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

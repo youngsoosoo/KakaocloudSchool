@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>switch</title>
+    <script>
+        //1-4 사이의 문자를 입력
+        let menu = prompt("1부터 4사이의 문자를 입력하세요.");
+        //1이면 중식 2이면 한식 3이면 일식 4이면 분식 그 이외에는 잘못된 입력
+        switch(menu){
+            case '1':
+                alert("중식");
+                break;
+            case '2':
+                alert("한식");
+                break;
+            case '3':
+                alert("일식");
+                break;
+            case '4':
+                alert("분식");
+                break;
+            default :
+                alert("잘못된 메뉴");
+                break;
+        }
+
+        let score = prompt("점수를 입력하세요");
+        switch(score){
+            case score >= 60:
+                alert("합격");
+                break;
+            case score < 60:
+                alert("불합격");
+                break
+        }
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
