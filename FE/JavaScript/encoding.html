@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Query String Encoding</title>
+    <script>
+        //? 뒷 부분을 query string 또는 parameter라고 함
+        //자바스크립트에서 서버에게 요청을 할 때 quert stirng에 영문과 숫자
+        //이외의 데이터가 있으면 인코딩해서 전송해야 함
+        var url = "https//www.kakao.com/taxi?name=블랙"
+
+        //인코딩 수행
+        //최근에는 서버 랜더링을 잘 사용하지 않기 때문 더욱 중요
+        var param = encodeURI(url);
+
+        console.log(param);
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

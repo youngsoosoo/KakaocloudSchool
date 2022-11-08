@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>함수 - 매개변수</title>
+    <script>
+        func_1();
+
+        //Hoisting 가능 - 함수를 선언하기 전에 호출해도 호출이 됨.
+        //이 방법을 최근에는 권장하지 않음
+        function func_1(){
+            console.log("function 키워드 다음에 함수 이름 설정");
+        }
+
+        func_1();
+
+        //func_2();
+        //let을 이용해서 만들면 Hoisting을 하면 에러를 발생시켜줌.
+
+        let func_2 = function(){
+            console.log("function 키워드 다음에 함수 이름 설정");
+        }
+
+        func_2();
+
+        //화살표 함수 - 함수를 다른 함수에 대입할 때 이용
+        //최근에 자바스크립트 라이브러리의 도큐먼트 설명에서 많이 이용
+        let func_3 = () =>{
+            console.log("화살표 함수");
+        }
+
+        func_3();
+
+        //매개변수를 받아서 매개변수 만큼 출력
+        //화살표 함수는 매개변수가 1개이면 ()를 생략해도 됩니다.
+        let func_4 = n => {
+            for(var i=0; i<n; i++){
+                console.log("매개변수 1개");
+            }
+        }
+
+        func_4(3);
+
+        //2개의 매개변수를 받아서 매개변수1 만큼 매개변수2를 출력
+        //매개변수가 2개 이상이면 하나로 묶는 것을 고려
+        //2개 이상이 되면 매개변수를 순서대로 대입해야합니다.
+        //대부분의 사람은 순서보다는 이름을 잘 기억하므로
+        //2개 이상인 경우는 별도의 이름을 이용해서 묶는 것이 좋습니다.
+        let func_5 = (n, msg) => {
+            for(var i=0; i<n; i++){
+                console.log(msg);
+            }
+        } 
+
+        func_5(2, "문자열");
+
+        let data1 = 10;
+        let data2 = [100, 200, 300];
+        let data3 = "문자열";   //문자열은 세부 데이터를 변경할 수 없습니다.
+        //문자열은 전체를 변경해야합니다.
+
+        let f1 = (arg) => {
+            console.log("arg:" + arg);
+            arg = 20;
+        }
+        //arg = data1 -> arg=10
+        f1(data1);
+        //함수 내에서 변경을 해도 data1은 변경되지 않습니다.
+        console.log("data1:" + data1);
+
+        let f2 = (ar) => {
+            console.log("ar:" + ar);
+            //함수 내에서 매개변수로 받은 배열이나 객체의
+            //내부 요소를 변경하면 원본의 내용이 변경될 수 있음
+            //바람직하지 않은 것으로 간주하지만
+            //메모리를 아낄 목적으로 이용하는 경우도 많습니다.
+            ar[0] = 2030;
+        }
+        //배열을 함수에 대입하면 배열의 내용이 변경될 수 있습니다.
+        f2(data2);
+        console.log("data2:" + data2);
+
+
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
