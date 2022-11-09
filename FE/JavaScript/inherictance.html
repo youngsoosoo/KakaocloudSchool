@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>상속</title>
+    <script>
+        class Star{
+            //생성자
+            constructor(name=""){
+                this.name = name;
+            }
+            
+            attack(){
+
+                console.log("공격");
+            }
+        }
+
+        class Protoss extends Star{
+            constructor(name="", demage=1){
+                //상위 클래스의 생성자 호출
+                super(name);
+                this.demage = demage;
+            }
+            //상위 클래스에 있는 메서드를 다시 정의하는 것 - Method Overriding
+            attack(){
+                //상위 클래스의 메서드 호출
+                super.attack();
+                console.log("프로토스의 공격");
+            }
+        }
+
+        let p = new Protoss("질럿", 10);
+        p.attack();
+
+        p = new Star("스타크래프트");
+        //위에 있는 p.attack()과 동일한 코드인데
+        //어떤 클래스의 인스턴스를 대입했느냐에 따라
+        //다른 메서드를 호출하는데 이를 Polymorphism(다형성)
+        //이라고 합니다.
+        p.attack();
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

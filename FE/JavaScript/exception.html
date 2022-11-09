@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>예외 처리</title>
+    <script>
+        try{
+            //예외 발생
+            //예외 처리 구문이 없으면 프로그램 중단
+            //예외 처리 구문이 있으면 프로그램 계속 수행
+            var ar = new Array(43000000000);
+            //예외 강제 발생 - 클라이언트용 애플리케이션 만들 때 많이 이용
+            throw new Error("예외 강제 발생");
+        } catch(e) {
+            //예외가 발생했을 때 호출
+            console.log("예외 발생");
+            console.log("예외이름 : " + e.name);
+            console.log("예외메세지 : " + e.message);
+        }finally{
+            console.log("예외 발생 여부에 상관없이 무조건 수행");
+        }
+        
+        console.log("메세지 출력");
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

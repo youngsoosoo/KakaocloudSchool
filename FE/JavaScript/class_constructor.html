@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OOP</title>
+    <script>
+        const Person = class{
+            //생성자
+            constructor(num=1, name="", tel=''){
+                this.num = num;
+                this.name = name;
+                this.tel = tel;
+            }
+            //접근자 메서드 - 속성의 값을 설정하고 리턴하는 메서드
+            //get과 set을 붙이면 속서엋럼 메서드를 호출할 수 있습니다.
+            setNum(num){
+                this.num = num;
+            }
+
+            getNum(){
+                return this.num;
+            }
+
+            // get getNum(){
+            //     return this.num;
+            // }
+
+            //클래스가 호출하는 메서드
+            //숨겨진 매개변수인 this가 없음
+            //prototype에 추가하는 것이 아니라 클래스에 추가
+            //인스턴스는 prototype에 추가된 것만 호출이 가능
+            static disp(){
+                //이 메서드는 안에서 this를 사용한다면 이 this는
+                //인스턴스의 참조가 아니고 class 객체의 참조가 됩니다.
+                return "static";
+            }
+        }
+
+        //인스턴스 생성
+        const person1 = new Person();
+        let person2 = new Person(2, "파이터", 010);
+        let person3 = new Person(3, "나이트", 011);
+
+        //메서드를 이런식으로 호출할 수 있지만 잘 사용하지 않음
+        //console.log(person1.getNum);
+        person1.setNum(103);
+        console.log(person1.getNum());
+        //클래스 이름으로 일반 메서드 호출하면 에러
+        //메서드를 호출할 때 this에 인스턴스 자신의 참조를 넘겨야하는데
+        //클래스는 인스턴스가 아니기 때문에 this에 대입이 안됩니다.
+        console.log(Person.disp());
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

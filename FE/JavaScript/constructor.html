@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OOP</title>
+    <script>
+        //class : 동일한 모양의 객체를 만들기 위해서 사용하는 모형
+        //사용자 정의 자료형
+        const Member = class {
+            //생성자
+            constructor(name){
+                //name 속성을 {} 안에 감싸서 만들면 속성이 생성됩니다.
+                //return {name:"noname"};
+
+                //이렇게 만들면 인스턴스가 직접 호출하는 것이 안됨.
+                //이 경우는 데이터를 리턴하는 메서드를 별도로 만들어야 사용 가능
+                this.name = name;
+            }
+
+            //name이라는 속성을 생성하면서 대입
+            setName(name){
+                this.name = name;
+            }
+            //name 속성의 값을 리턴하는 메서드
+            getName(){
+                return this.name;
+            }
+        }
+
+        //인스턴스 생성
+        const member = new Member();
+        //생성자에서 name이라는 속성을 생성했으므로 name속성을 사용할 수 있음.
+        console.log(member.getName());
+
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

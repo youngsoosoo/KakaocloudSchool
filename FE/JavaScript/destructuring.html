@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>구조 분해 할당</title>
+    <script>
+        //배열은 순차적으로 대입이 됩니다.
+        //배열은 Iterator를 준수하기 때문에 순서대로 대입합니다.
+        var ar = [100, 200, 300, 400];
+        let [one, two, three, fout] = ar;
+        console.log(one);
+
+        //Iterator가 없기 때문에 순차적으로 대입되는 것이 아니고 이름을 보고
+        //대입됩니다.
+        var obj = {"name" : "카리나", "job" : "가수"};
+        let {name, job} = obj;
+        //let {name1, job} = obj;   //이렇게 실행한다면
+        //console.log(name1);       //undefined가 나온다
+        console.log(name);
+
+        let display = ({msg, n}) => {
+            //let {msg, n} = ob;
+            for(let i=0; i<n; i++){
+                console.log(msg);
+            }
+        }
+
+        display({n:3, msg:"안녕하세요"});
+
+        var br = [100, 200, 300, 400];
+        var ins = {"name1" : "카리나", "job1" : "가수", "company" : "SM", "group" : "aespa"};
+
+        //spread 연산
+        let [first, ...etc] = br;
+        console.log(first);
+        console.log(etc);
+
+        let {name1, job1, ...attr} = ins;
+        console.log(attr);
+
+        //함수에 사용되면 rest param(결과는 같다)
+        function rest(name1, job1, ...attr) {
+            console.log(attr);
+        }
+
+        rest(ins);
+
+        //기본 값 설정 가능
+        let [a, b, c, d, e=500] = br;
+        console.log(e);
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
