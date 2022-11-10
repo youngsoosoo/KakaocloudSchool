@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>정규 표현식</title>
+    <script>
+        var str = 'Javascript Reg Exp';
+        //위의 문자열에 script가 포함되어 있는지 확인
+        var regExp = /script/i;
+        console.log(regExp.test(str));
+
+        //주민등록번호 검사
+        //숫자6개-숫자7개
+        var jumin1 = "1234567-1234567";
+        var jumin2 = "123456-123456";
+        var jumin3 = "1r34567-1234567";
+
+        //패턴 생성
+        var jumin = /\d{6}-\d{7}/;
+
+        console.log(jumin.test(jumin1));
+        console.log(jumin.test(jumin2));
+        console.log(jumin.test(jumin3));
+
+        var email1 = "lovepys01@naver.com";
+        var email2 = "lovepys012gmail.com";
+
+        var email = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
+        console.log(email.test(email1));
+        console.log(email.test(email2));
+
+        //입력 데이터의 유효성 검사는
+        //문자열과 정규 표현식을 이용합니다.
+        
+        //텍스트 마이닝(텍스트 분석) 할 떄 정규 표현식에 해당하는 데이터를
+        //다른 데이터로 치환하는 경우가 있음
+
+        let set = new Set();
+        set.add("JavaScript");
+        set.add("Java");
+        set.add("JavaScript");
+        console.log(set);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>문자열</title>
+    <script>
+        var company = "adamsoft";
+
+        console.log("문자열 길이 : " + company.length);
+        console.log("0번째 문자 : " + company.charAt(0));
+        console.log("0번째 문자 코드 : " + company.charCodeAt(0));
+
+        //대문자로 변환
+        console.log("대문자로 변환 : " + company.toUpperCase());
+
+        let sample = "   Hello   ";
+        //좌우 공백 제거 - trim
+        console.log("좌우 공백 제거 : " + sample.trim());
+
+        // trim 안 쓰고 공백 제거
+        var result = "";
+        var len = sample.length;
+        for(var i=0; i<len; i++){
+            if(sample.charAt(i) !== " "){
+                result = result + sample.charAt(i);
+            }
+        }
+
+        console.log("좌우 공백 제거 : " + result);
+
+        //찾아주는 메서드는 indexof
+        console.log(company.indexOf("a")); //앞에서부터 첫번째
+        console.log(company.lastIndexOf("a")); //뒤에서부터 첫번째
+        //못 찾으면 음수
+        console.log(company.indexOf("a")); //앞에서부터 첫번째
+
+        var uri = "abc/def";
+        //문자열 분할
+        //패턴을 가지고 분할해서 배열로 생성 - split
+        var ar = uri.split("/");
+        console.log(ar[0]);
+        console.log(ar[ar.length - 1]);
+
+
+        //위치를 가지고 분할해서 문자열로 생성 - substring
+        //substring은 매개변수가 1개이면 그 이후를 전부 잘라서 리턴
+        //매개변수가 2개이면 앞은 시작하는 위치인데
+        //뒤는 끝나는 위치인 경우도 있고 개수인 경우도 있음
+        console.log(uri.substring(1));
+        console.log(uri.substring(1, 5));
+
+        //13자리 문자열을 만들고 뒤의 6자리는 별로 보여주기
+        var s = "abcdefghijkl";
+        
+        console.log(s.replace(/[1-9]/gi, " "));
+
+        //문자열 템플릿
+        var data = 42;
+        //이 데이터는 42입니다. 형태로 출력
+        console.log("이 데이터는 " + data + "입니다.");
+        console.log(`이 데이터는 ${data} 입니다.`);
+/*
+        console.log("중간에 줄바꿈을 하면
+        에러가 발생합니다");*/
+
+        // `을 사용하면 에러가 나지 않는다.
+        console.log(`중간에 줄바꿈을 해도
+        에러가 안 납니다.`);
+
+        //1986년 5월 5일에서 현재까지 지나올 날 수
+
+        //현재 날짜 가져오기
+        let today = new Date();
+        //1986년 5월 5일 설정
+        let meetday = new Date(1986, 4, 5);
+        //console.log(meetday);
+
+        var interval = today.getTime() - meetday.getTime();
+        var date = interval / (1000 * 60 * 60 * 24);
+        console.log("지나온 날수 : " + Math.round(date));
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON Parsing</title>
+    <script>
+        //이 데이터는 실제로는 서버에서 받아옵니다.
+        var jsonText = '{"name" : "adam", "age":47}';
+        //파싱을 수행
+        var result = JSON.parse(jsonText);
+        //이 번 문자열은 {}안에 있으므로 객체
+        console.log(result.name);
+        console.log(result.age);
+
+        //배열 문자열
+        jsonText = "[40, 50, 20, 40]";
+        result = JSON.parse(jsonText);
+        //배열을 순회
+        result.forEach((e)=>{
+            console.log(e);
+        });
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
