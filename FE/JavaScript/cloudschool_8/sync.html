@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>동기와 비동기</title>
+    <script>
+            //스크립트에서 body에 작성한 것들을 사용하는 경우
+            //body 아래에 작성하거나 위에 작성할 때는
+            //이 이벤트 발생 후에 동작하는 코드를 작성해야 합니다.
+            window.addEventListener("load", (e) => {
+                //btn이라는 id를 가진 버튼을 눌렀을 때
+                document.getElementById("btn").addEventListener("click", (e) => {
+                    //동기식 처리
+                    //반복문을 10억번 돌렸을 때 걸리는 시간을 측정
+                    const start = Date.now();
+                    for(var i=0; i<1000000000; i++){}
+                    const end = Date.now();
+                    console.log((end-start) + "밀리초");
+
+                    console.log("다음 작업");
+
+                    //비동기식 처리
+                    //타이머는 비동기식 처리를 수행
+                    setTimeout(() => {
+                        const start = Date.now();
+                        for(var i=0; i<1000000000; i++){}
+                        const end = Date.now();
+                        console.log((end-start) + "밀리초");
+                    }, 0);  //기다리는 시간 없이 바로 수행
+                    console.log("다음 작업");
+                });
+                
+            });
+    </script>
+</head>
+<body>
+    <button id="btn">클릭</button>
+</body>
+</html>

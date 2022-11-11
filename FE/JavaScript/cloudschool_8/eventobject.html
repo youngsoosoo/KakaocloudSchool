@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이벤트 객체의 내용</title>
+</head>
+<body>
+    <p id="paragraph">문단 태그</p>
+    <button id="btn">버튼</button>
+    <script>
+        document.getElementById("paragraph").addEventListener("click",
+         (e) => {
+            for(attr in e){
+                console.log(attr + ":" + e[attr]);
+            }
+         });
+
+        document.getElementById("btn").addEventListener("click", (e) => {
+            // 문단 태그의 클릭이 발생하도록 강제로 이벤트 발생시키기
+            document.getElementById("paragraph").click();
+        });
+
+    </script>
+    <!--action은 처리할 서버의 URL
+    method는 요청 방식 - get, post-->
+    <form action="loginprocessing" method="post" id="loginform">
+        <p id="msg"></p>
+        <p>
+            아이디<input type="text" name="id" id="id">
+        </p>
+        <p id="pwmsg"></p>
+        <p>
+            비밀번호<input type="password" name="pw" id="pw">
+        </p>
+        <input type="submit" value="로그인" />
+    </form>
+
+    <h1 id="outer">
+        <span id="inner">인라인 태그</span>
+    </h1>
+    <script>
+        document.getElementById("outer").addEventListener("click", (e)=>{
+            alert("Outer 클릭");
+        });
+        document.getElementById("inner").addEventListener("click", (e)=>{
+            alert("Inner 클릭");
+            //버블링 막기
+            e.stopPropagation();
+        });
+
+        let idinput = document.getElementById("id");
+        let pwinput = document.getElementById("pw");
+        let pwmsg = document.getElementById("pwmsg");
+        let msg = document.getElementById("msg");
+
+        document.getElementById("loginform").addEventListener("submit",
+            (e)=>{
+                    //아이디 입력란 찾아오기
+                    if(idinput.value.trim().length === 0){
+                        msg.innerHTML = "아이디는 필수입니다.";
+                        msg.style.color = "Red";
+                        //기본 이벤트를 제거해서 서버에 전송하지 않도록 하기
+                        e.preventDefault();
+                    }else{
+                        msg.innerHTML = "";
+                    }
+                    //비밀번호 입력란 찾아오기
+                    if(pwinput.value.trim().length === 0){
+                        pwmsg.innerHTML = "비밀번호는 필수입니다.";
+                        pwmsg.style.color = "Red";
+                        //기본 이벤트를 제거해서 서버에 전송하지 않도록 하기
+                        e.preventDefault();
+                    }else{
+                        var password = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/;      //보통
+                        var pw1 = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;                                     //약함
+                        var pw2 = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,10}$/;    //강함
+                        pwmsg.innerHTML = "";
+                        if(password.test(pwinput.value) == false){
+                        pwmsg.innerHTML = "비밀번호는 최소 8 자, 최소 하나의 문자, 하나의 숫자 및 하나의 특수 문자를 넣어주세요.";
+                        pwmsg.style.color = "Red";
+                        //기본 이벤트를 제거해서 서버에 전송하지 않도록 하기
+                        e.preventDefault();
+                        }else{
+                            pwmsg.innerHTML = "";
+                            
+                            if(pw1.test(pwinput.value)){
+                                pwmsg.innerHTML = "약함";
+                                pwmsg.style.color = "Red";
+                                e.preventDefault();
+                            }
+                            if(password.test(pwinput.value)){
+                                pwmsg.innerHTML = "중간";
+                                pwmsg.style.color = "Orange";
+                                e.preventDefault();
+                            }
+                            if(pw2.test(pwinput.value)){
+                                pwmsg.innerHTML = "강함";
+                                pwmsg.style.color = "green";
+                                e.preventDefault();
+                            }
+                        }
+                    }
+                    
+        });
+        //비밀번호가 비어있으면 전송이 안되도록 작성
+        //비밀번호 확인란을 만들어서 비밀번호와 확인란이 맞지 않으면 전송이 안되록 작성
+        //비밀번호의 패턴이 맞지 않으면 전송이 되지 않도록
+        //비밀번호의 패턴을 보고 강한 비밀번호인지 아닌지 판별
+    </script>
+</body>
+</html>

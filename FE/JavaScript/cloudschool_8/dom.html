@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM</title>
+
+</head>
+<body>
+    <h1 id="header">제목</h1>
+    <p id="content">안녕하세요</p>
+    <input type="text" id="alias" value="adam"/>
+
+    <!-- form 안에 있으면 submit 기능 -->
+    <button onclick="alert('인라인 처리')">버튼1</button>
+    <input type="button" value="버튼2" id="btn"/>
+
+    <script>
+        let h1 = document.getElementById("header");
+        h1.style.color = "Red";
+        h1.style.border = "2px Solid Black";
+        
+        document.getElementById("content").innerHTML += "텍스트 변경";
+        alert(document.getElementById("alias").value);
+/*      고전 방법
+        document.getElementById('btn').onclick = function(){
+            alert('고전적 이벤트 처리 모델');
+        }
+*/      
+        //최근 방법
+        document.getElementById("btn").addEventListener("click",
+        () =>{
+            alert("표준 이벤트 모델");
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,8 @@
+{
+    "count" : 3,
+    "documents" : [
+                    {"name" : "karina", "company" : "SM"},
+                    {"name" : "joy", "company" : "SM"},
+                    {"name" : "minji", "company" : "HIVE"}
+                ]
+}
