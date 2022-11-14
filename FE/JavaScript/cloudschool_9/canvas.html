@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>캔버스</title>
+</head>
+<body>
+    <canvas id="canvas" width="300", height="300"></canvas>
+    <svg width="700" height="300">
+        <rect width="400" height="400" fill="blue"/>
+    </svg>
+    <script>
+        //캔버스 찾아오기
+        let canvas = document.getElementById("canvas");
+        //캔버스에 그릴 수 있는 정보 객체를 찾아오기
+        let context = canvas.getContext("2d");
+        context.fillRect(0, 0, 150, 100);
+        context.fillText("안녕하세요 반갑습니다.", 0, 110);
+    </script>
+</body>
+</html>

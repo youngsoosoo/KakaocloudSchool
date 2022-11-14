@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ajax - xml</title>
+    <script>
+        window.addEventListener("load", (e) => {
+            let btn = document.getElementById("btn");
+            let display = document.getElementById("display");
+            //버튼을 클릭했을 때
+            btn.addEventListener("click", () => {
+                //ajax 요청 객체 생성
+                let request = new XMLHttpRequest();
+                
+                request.open("GET", "./resources/data.xml");
+                request.send("");
+                request.addEventListener("load", () => {
+                    //읽어온 데이터 중 name 태그 내용만 추출
+                    let xmldata = request.responseXML;
+                    //태그의 배열
+                    let names = xmldata.getElementsByTagName("name");
+                    let companys = xmldata.getElementsByTagName("company");
+                    // 순회하면서 태그 안의 내용을 추출
+                    for(let i=0; i<names.length; i++) {
+                        //childNodes는 배열의 형태로 노드를 순서대로 반환한다.
+                        //nodeValue는 노드의 값을 반환해준다.
+                        var name = names[i].childNodes[0].nodeValue;
+                        var company = companys[i].childNodes[0].nodeValue;
+                        display.innerHTML += "<p>이름 : " + name + "</p>";
+                        display.innerHTML += "<p>회사 : " + company + "</p>";
+                    }
+                });
+                //에러는 편의상 생략
+            });
+        });
+    </script>
+</head>
+<body>
+    <button id="btn">json 데이터 가져오기</button>
+    <div id="display"></div>
+    
+</body>
+</html>

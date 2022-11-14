@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>단순한 Fetch</title>
+    <script>
+        /*
+        let request = new XMLHttpRequest();
+        request.open("GET", "./resources/data.json");
+        request.send("");
+        request.addEventListener("load", () => {
+            let result = JSON.parse(request.responseText);
+            alert(result.count);
+        });
+        request.addEventListener("error", (e) => {
+            alert(e.message);
+        });*/
+        //위의 주석의 내용과 결과가 같음
+        fetch('./resources/data.json')
+        .then((response) => response.json())
+        .then((data) => alert(data.count))
+        .catch((e) => alert(e.message));
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
