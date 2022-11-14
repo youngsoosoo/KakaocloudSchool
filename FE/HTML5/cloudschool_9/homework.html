@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        window.addEventListener("load", () => {
+            //DOM 객체 찾아오기
+            let btn = document.getElementById("btn");
+            let display = document.getElementById("display");
+            //버튼을 클릭했을 때
+            btn.addEventListener("click", () => {
+                //ajax 요청 객체 생성
+                let request = new XMLHttpRequest();
+
+                //요청 준비
+                request.open("GET", "https://jsonplaceholder.typicode.com/posts");
+                //요청 전송
+                request.send("");
+
+                //응답 받기
+                request.addEventListener("load", () => {
+                    //XML 이외의 데이터 읽기
+                    // display.innerHTML = request.responseText;
+
+                    //받아온 문자열 파싱
+                    let result = JSON.parse(request.responseText);
+                    
+                    //배열을 순회
+                    // for(doc of ar){         //그냥 프로그래밍을 할 것이면 이것이 좋다.
+                    //     display.innerHTML += "<h3>이름 : " + doc.name + "</h3>";
+
+                    // }
+                    // 배열을 순회하면서 { } 안의 내용을 수행
+                    result.forEach((doc) => {   //함수형 프로그래밍 누군가에게 보여주기 위함이면 이게 더 좋다.
+                        display.innerHTML += "<h3>userid : " + doc.userId + "</h3>";
+                        display.innerHTML += "<h3>id : " + doc.id + "</h3>";
+                        display.innerHTML += "<h3>title : " + doc.title + "</h3>";
+                        display.innerHTML += "<h3>body : " + doc.body + "</h3>";
+                    });
+                });
+                request.addEventListener("error", (e) => {
+                    display.innerHTML = e.message;
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+    <button id="btn">json 데이터 가져오기</button>
+    <div id="display"></div>
+</body>
+</html>
