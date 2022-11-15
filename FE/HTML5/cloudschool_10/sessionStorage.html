@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>세션 스토리지</title>
+</head>
+<body>
+    <!-- 2개의 문자열 입력 받는 도구와 버튼 3개-->
+    key<input type="text" id="keyinput" />
+    value<input type="text" id="valueinput" />
+    <input type="button" value="삽입" id="insertbtn"/>
+    <button id="removebtn">삭제</button>
+    <button id="addwindowbtn">윈도우 추가</button>
+
+    <!-- 데이터 출력 영역 -->
+    <fieldset>
+        <legend>데이터 출력 영역</legend>
+        <select id="list" size="10" />
+    </fieldset>
+
+    <script>
+        let keyinput = document.getElementById("keyinput");
+        let valueinput = document.getElementById("valueinput");
+        let insertbtn = document.getElementById("insertbtn");
+        let removebtn = document.getElementById("removebtn");
+        let addwindowbtn = document.getElementById("addwindowbtn");
+        let list = document.getElementById("list");
+
+        //세션 스토리지의 내용을 읽어서 list에 출력하는 함수
+        //처음 접속할 때 그리고 삽입이나 삭제를 할 때
+        //매번 데이터를 다시 출력할 생각이라서 코드를 여러 번 작성
+        //하지 않도록 하기 위해서
+        const showData = () => {
+            //list의 내용 초기화
+            list.innerHTML = "";
+
+            //세션 스토리지를 순회하면서 하나씩 읽기
+            for(let i=0; i<sessionStorage.length; i++){
+                let temp = sessionStorage.key(i);
+                //select에 옵션을 추가
+                //앞의 내용이 보여지는 내용이고 뒤의 것이 이름
+                list.options[list.options.length] = new Option(temp + ":" + sessionStorage[temp], temp);
+            }
+        }
+
+        //윈도우가 모든 데이터를 로드 한 후
+        window.addEventListener("load", () => {
+            //Live Server를 이용해서 실행하면 기본적으로
+            //하나의 데이터가 저장되서 출력됨.
+            showData();
+        });
+
+        //삽입 버튼을 눌렀을 때
+        insertbtn.addEventListener("click", () => {
+            sessionStorage[keyinput.value] = valueinput.value;
+            //데이터를 다시 출력
+            showData();
+        });
+        
+        list.addEventListener("click", () => {
+            //선택한 데이터 찾아오기
+            let selectddata = list.options[list.selectedIndex];
+            keyinput.value = selectddata.value;
+            valueinput.value = sessionStorage[selectddata.value]
+        });
+
+        //삭제 버튼을 눌렀을 때 선택된 데이터 삭제
+        removebtn.addEventListener("click", () => {
+            delete sessionStorage[keyinput.value];
+            showData();
+        });
+
+        //윈도우 추가 버튼을 눌렀을 때 새창으로 열기
+        addwindowbtn.addEventListener("click", () => {
+            //새 창에서 열면 세션은 현재 내용을 복제해서 생성됩니다.
+            window.open(location.href);
+        });
+    </script>
+</body>
+</html>

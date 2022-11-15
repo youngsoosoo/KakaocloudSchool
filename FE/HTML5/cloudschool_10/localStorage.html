@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>로컬 스토리지를 이용한 ID 저장</title>
+</head>
+<body>
+    <form method="post" action="login" id="loginform">
+        아이디 : <input type="text" id="id"/> <br/>
+        비밀번호 : <input type="password" id="pw"/> <br/>
+        <input type="checkbox" id="idsave" />아이디 저장 <br/>
+        <input type="submit" value="로그인" />
+    </form>
+    
+    <script>
+        let loginform = document.getElementById("loginform");
+        let sid = document.getElementById("id");
+        let pw = document.getElementById("pw");
+        let idsave = document.getElementById("idsave");
+
+        //form의 데이터를 전송할 때 (submit)
+        loginform.addEventListener("submit", () => {
+            //체크 여부 확인
+            if(idsave.checked == true){
+                //로컬 스토리지에 저장
+                localStorage.ids = sid.value;
+            }else{
+                //로컬 스토리지에서 삭제
+                delete localStorage.ids;
+            }
+        });
+
+        //메모리 로드가 끝나면 ids 저장되어 있으면 가져오기
+        window.addEventListener("load", () => {
+            if(typeof localStorage.ids != 'undefined') {
+                sid.value = localStorage.ids;
+                idsave.checked = true;
+            }
+        });
+    </script>
+</body>
+</html>
