@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>여러 개의 파일 업로드</title>
+</head>
+<body>
+    <form id="form" method="post" enctype="multipart/form-data">
+        <p>이름 : <input type="text" name="title" id="title"/></p>
+        <p>파일 : <input type="file" name="image" id="image" accept="image/*" multiple="multiple"/></p>
+        <input type="button" value="전송" id="btn"/>
+    </form>
+    <script>
+        document.getElementById('btn').addEventListener('click', () => {
+            //전송할 폼 데이터 생성
+            const formData = new FormData();
+            //내용 추가
+            let files = document.getElementById('image').files;
+            for(let idx=0; idx<files.length; idx++){
+                formData.append('image', document.getElementById('image').files[idx]);
+            }
+            formData.append('title', document.getElementById('title').value);
+            
+            //ajax를 이용해서 전송
+            let xhr = new XMLHttpRequest();
+            xhr.open("POST", "/multi", true);
+            xhr.send(formData);
+            xhr.addEventListener('load', (e) => {
+                //서버가 JSON 문자열을 파싱
+                let text = xhr.responseText;
+                let result = JSON.parse(text);
+                //파싱한 결과를 출력
+                alert(result.result);
+            });
+
+        });
+    </script>
+</body>
+</html>

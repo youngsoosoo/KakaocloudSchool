@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>하나의 파일 업로드</title>
+</head>
+<body>
+    <!-- action이 없으면 요청이 URL이 action이 됩니다.
+        file을 보내는 경우는 enctype 변경이 필수
+        method는 post나 put이 될 수 있습니다.-->
+    <form id="form" method="post" enctype="multipart/form-data">
+        <p>이름 : <input type="text" name="title" id="title"/></p>
+        <p>파일 : <input type="file" name="image" id="image" accept="image/*"/></p>
+        <input type="submit" value="전송"/>
+    </form>
+</body>
+</html>
