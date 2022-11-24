@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Node - MariaDB</title>
+    <link rel="stylesheet" href="/css/common.css"/>
+    <script>
+        window.addEventListener('load', (e) =>{
+            //DOM 찾아오기
+            let allbtn = document.getElementById('allbtn');
+            //데이터 출력을 위한 영역
+            let content = document.getElementById('content');
+
+            //allbtn 클릭 이벤트 처리
+            allbtn.addEventListener('click', (e) => {
+                //ajax로 데이터 가져오기
+                let request = new XMLHttpRequest();
+                //요청 생성
+                request.open('GET', '/item/all');
+                //요청
+                request.send();
+                //데이터가 전송된 경우 처리
+                request.addEventListener('load', () => {
+                    //출력을 하기 위해서는 JSON 문자열을
+                    //자바스크립트 객체로 변환
+                    let data = JSON.parse(request.responseText);
+                    //데이터 가져오기에 성공한 경우
+                    if(data.result == true) {
+                        content.innerHTML += "<div align='center' class='body'>";
+                        content.innerHTML += "<h2>상품 목록</h2>";
+                        content.innerHTML += "<table border='1'>";
+                        content.innerHTML += "<tr class='header'>";
+                        content.innerHTML += "<th align='center' width='80'>ID</th>";
+                        content.innerHTML += "<th align='center' width='80'>이름</th>";
+                        content.innerHTML += "<th align='center' width='80'>가격</th>";
+                        content.innerHTML += "</tr>";
+                        //list 키에 있는 데이터를 가져오기
+                        let ar = data.list;
+                        //배열의 데이터 순회
+                        for(let item of ar){
+                            content.innerHTML += "<tr class='record'>";
+                            content.innerHTML += "<td align='center'>" + item.itemid + "</td>";
+                            content.innerHTML += "<td align='left'>" + item.itemname + "</td>";
+                            content.innerHTML += "<td align='right'>" + item.price + "원</td>";
+                            content.innerHTML += "</tr>";
+                        }
+                        
+                        content.innerHTML += "</table>";
+                        content.innerHTML += "</div>"; 
+                    }else{
+                        content.innerHTML = "데이터 가져오기 실패"
+                    }
+                    
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+    <h1>Maria DB</h1>
+    <input type="button" value="전체 데이터 가져오기" id="allbtn" /><br/>
+    <!-- 데이터 출력 영역 -->
+    <div id="content"></div>
+</body>
+</html>
