@@ -1,0 +1,20 @@
+<form method="post" id="updateform" 
+    enctype="multipart/form-data">
+    아이템 아이디:<input type="text" name="itemid" id="itemid"/>
+    <br/>
+    아이템 이름:<input type="text" name="itemname" id="itemname"/>
+    <br/>
+    아이템 가격:<input type="text" name="price" id="price"/>
+    <br/>
+    설명:<input type="text" name="description" id="description"/>
+    <br/>
+    새로운 이미지:<input type="file" name="pictureurl" />
+    <br/>
+    이전 이미지<img width="100" height="100" id="picture">
+    <br/>
+    <!-- hidden 은 화면에 출력되지는 않지만 가지고 있어야 하는
+    데이터가 있을 때 사용-->
+    <input type="hidden" name="oldpictureurl" id="oldpictureurl"/>
+    <br />
+    <input type="submit" value="수정" />
+</form>
