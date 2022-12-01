@@ -1,5 +1,8 @@
 const passport = require("passport");
+//로컬 로그인 구현
 const local = require("./localStrategy"); //현재 디렉토리에 localStrategy 파일을 가져오기
+//카카오 로그인
+const kakao = require("./kakaoStrategy");
 const User = require("../models/user"); //상위 디렉토리에서 model 디렉토리의 user 가져오기
 
 module.exports = () => {
@@ -11,9 +14,24 @@ module.exports = () => {
   //넘어온 id에 해당하는 데이터가 있으면 데이터베이스에서 찾아서
   //세션에 저장
   passport.deserializeUser((id, done) => {
-    User.findOne({ where: { id } })
+    User.findOne({
+      where: { id },
+      include: [
+        {
+          model: User,
+          attributes: ["id", "nick"],
+          as: "Followers",
+        },
+        {
+          model: User,
+          attributes: ["id", "nick"],
+          as: "Followings",
+        },
+      ],
+    })
       .then((user) => done(null, user))
       .catch((err) => done(err));
   });
   local();
+  kakao();
 };
