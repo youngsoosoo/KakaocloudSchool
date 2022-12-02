@@ -1,7 +1,7 @@
 {
   "name": "kakaocloud_21",
   "version": "1.0.0",
-  "description": "",
+  "description": "authentication",
   "main": "app.js",
   "scripts": {
     "start": "nodemon app",

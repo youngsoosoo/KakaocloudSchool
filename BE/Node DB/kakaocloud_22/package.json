@@ -1,7 +1,7 @@
 {
   "name": "kakaocloud_22",
   "version": "1.0.0",
-  "description": "",
+  "description": "apiserver",
   "main": "app.js",
   "scripts": {
     "start": "nodemon app",
@@ -13,9 +13,11 @@
     "bcrypt": "^5.1.0",
     "compression": "^1.7.4",
     "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "express-mysql-session": "^2.1.8",
+    "express-rate-limit": "^6.7.0",
     "express-session": "^1.17.3",
     "file-stream-rotator": "^1.0.0",
     "jsonwebtoken": "^8.5.1",
