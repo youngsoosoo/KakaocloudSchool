@@ -5,8 +5,12 @@ class App extends Component {
   render() {
     return (
       <div>
-        <MyComponent />
-        <MyComponent />
+        <MyComponent name={3}>태그 안의 내용</MyComponent>
+        <StateComponent/>
+        <EventPractice/>
+        <ValiditySample/>
+        <ScrollBox ref={ref =>{this.box=ref;}}
+        <button onClick
       </div>
     );
   }
