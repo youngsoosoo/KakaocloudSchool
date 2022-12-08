@@ -1,0 +1,37 @@
+.ToDoInsert {
+  display: flex;
+  background: #495057;
+  input {
+    background: none;
+    outline: none;
+    border: none;
+    padding: 0.5rem;
+    font-size: 1.125rem;
+    line-height: 1.5;
+    color: white;
+    &::placeholder {
+      color: #dee2e6;
+    }
+    flex: 1;
+    //상위 태그에 felx가 설정되어 있으면 전체 합에 대한 비율로 배치가 가능
+    //-botstrap이 많이 이용
+  }
+
+  button {
+    background: none;
+    outline: none;
+    border: none;
+    background: #868e96;
+    color: white;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    transition: 0.1s background ease-in;
+    &:hover {
+      background: #adb5bd;
+    }
+  }
+}
