@@ -1,0 +1,14 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "content": "리액트",
+      "done": true
+    },
+    {
+      "id": 2,
+      "content": "노드",
+      "done": false
+    }
+  ]
+}
