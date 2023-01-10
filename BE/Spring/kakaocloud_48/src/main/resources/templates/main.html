@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>데이터 출력</title>
+    <style>
+      table, tr, td, th{
+        border: 1px solid #444444;
+      }
+    </style>
+</head>
+<body>
+  <table>
+    <tr>
+      <th>언어</th>
+      <th>IDE</th>
+      <th>빌드 도구</th>
+    </tr>
+    <tr>
+      <td>[[${map.language}]]</td>
+      <td>[[${map.ide}]]</td>
+      <td>[[${map.buildtool}]]</td>
+    </tr>
+  </table>
+  <table>
+    <tr th:each="task :${list}">
+        <td>[[${task}]]</td>
+    </tr>
+  </table>
+</body>
+</html>

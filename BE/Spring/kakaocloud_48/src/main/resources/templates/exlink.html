@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Link</title>
+</head>
+<body>
+  <ul>
+    <li th:each="vo:${list}">
+      <a th:href="@{/exview}">[[${vo.first}]]</a>
+      <a th:href="@{/exview(sno=${vo.sno})}">[[${vo.first}]]</a>
+      <a th:href="@{/exview/{sno}(sno=${vo.sno})}">[[${vo.first}]]</a>
+    </li>
+  </ul>
+</body>
+</html>

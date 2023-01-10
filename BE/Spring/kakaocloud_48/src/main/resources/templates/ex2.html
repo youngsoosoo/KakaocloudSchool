@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>데이터 목록 출력</title>
+</head>
+<body>
+    <ul>
+        <li th:each = "vo, state: ${list}">
+            <span th:text="${vo.sno % 5 == 0} ? ${vo.sno} : ${vo.first}"></span>
+        </li>
+    </ul>
+</body>
+</html>
