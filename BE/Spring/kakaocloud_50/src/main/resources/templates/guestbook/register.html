@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<th:block th:replace="~{/layout/basic:: setContent(~{this::content})}">
+  <th:block th:fragment="content">
+    <h1>방명록 작성</h1>
+    <form th:method="post">
+      <div class="form-group">
+        <label>제목</label>
+        <input type="text" class="form-control" name="title"  placeholder="제목 입력"/>
+      </div>
+      <div class="form-group">
+        <label>내용</label>
+        <textarea class="form-control" rows="5" name="content"  placeholder="내용 입력">
+
+        </textarea>
+      </div>
+      <div class="form-group">
+        <label>작성자</label>
+        <input type="text" class="form-control" name="writer"  placeholder="작성자"/>
+      </div>
+      <button type="submit" class="btn btn-primary">등록</button>
+    </form>
+  </th:block>
+</th:block>
