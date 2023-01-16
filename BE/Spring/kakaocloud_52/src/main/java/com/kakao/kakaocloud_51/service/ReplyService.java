@@ -23,6 +23,7 @@ public interface ReplyService {
     default Reply dtoToEntity(ReplyDTO dto){
         Board board = Board.builder().bno(dto.getBno()).build();
         Reply reply = Reply.builder()
+                .rno(dto.getRno())
                 .text(dto.getText())
                 .replyer(dto.getReplyer())
                 .board(board).build();

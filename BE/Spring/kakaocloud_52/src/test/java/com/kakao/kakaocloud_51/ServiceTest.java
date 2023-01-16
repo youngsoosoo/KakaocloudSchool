@@ -3,15 +3,22 @@ package com.kakao.kakaocloud_51;
 import com.kakao.kakaocloud_51.dto.PageRequestDTO;
 import com.kakao.kakaocloud_51.dto.BoardDTO;
 import com.kakao.kakaocloud_51.dto.PageResponeDTO;
+import com.kakao.kakaocloud_51.dto.ReplyDTO;
 import com.kakao.kakaocloud_51.service.BoardService;
+import com.kakao.kakaocloud_51.service.ReplyService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+
+import java.util.List;
 
 @SpringBootTest
 public class ServiceTest {
     @Autowired
     private BoardService boardService;
+
+    @Autowired
+    private ReplyService replyService;
 
     //등록 테스트
     @Test
@@ -52,5 +59,23 @@ public class ServiceTest {
                 .content("내용 변경")
                 .build();
         System.out.println(boardService.modify(dto));
+    }
+
+    @Test
+    public void testGetList(){
+        //게시글 번호를 이용해서 댓글 가져오기
+        List<ReplyDTO> list = replyService.getList(27L);
+        list.forEach(dto -> System.out.println(dto));
+
+    }
+
+    @Test
+    public void insertReply(){
+        ReplyDTO dto = ReplyDTO.builder()
+                .text("댓글 삽입 테스트")
+                .replyer("user1@kakao.com")
+                .bno(27L)
+                .build();
+        System.out.println(replyService.register(dto));
     }
 }

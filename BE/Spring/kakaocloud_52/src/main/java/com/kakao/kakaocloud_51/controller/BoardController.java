@@ -46,7 +46,7 @@ public class BoardController {
     //ModelAttribute는 파라미터로 사용하면 넘겨받은 데이터를
     //결과에 그대로 전달할 목적으로 사용
     @GetMapping({"/board/read", "/board/modify"})
-    public void read(@ModelAttribute("requestDTO") PageRequestDTO pageRequestDTO, Long bno, Model model){
+    public void read(@ModelAttribute("pageRequestDTO") PageRequestDTO pageRequestDTO, Long bno, Model model){
         log.info("글 번호" + bno);
         BoardDTO dto = boardService.get(bno);
         model.addAttribute("dto", dto);
