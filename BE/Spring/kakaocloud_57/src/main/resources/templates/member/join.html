@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>회원가입</title>
+</head>
+<body>
+  <div>
+    <h2>회원 가입</h2>
+    <form id="registerForm" action="/member/join" method="post">
+      <div>
+        <span>아이디</span>
+        <input type="text" name="mid" />
+      </div>
+      <div>
+        <span>비밀번호</span>
+        <input type="password" name="mpw" />
+      </div>
+      <div>
+        <span>이메일</span>
+        <input type="email" name="email" />
+      </div>
+      <div>
+        <span>이름</span>
+        <input type="text" name="name" />
+      </div>
+      <div>
+        <button type="submit">회원 가입</button>
+        <button type="reset">폼 초기화</button>
+      </div>
+    </form>
+  </div>
+  <script th:inline="javascript">
+    const error = [[${error}]]
+    if(error){
+      alert("중복된 아이디 입니다.");
+    }
+
+    const dto = [[${dto}]]
+    if(dto){
+      document.getElementById("mid").value=dto.mid;
+    }
+  </script>
+</body>
+</html>
